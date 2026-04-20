@@ -2,24 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgriDetect - Smart Farming Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Green Bytes | AgriDetect - See Through Smart Farming</title>
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      color: #fff;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    /* Background Slideshow */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Arial', sans-serif;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+
+    /* ---------- ENHANCED BACKGROUND SLIDESHOW (CINEMATIC, CRYSTAL CLEAR) ---------- */
     .slideshow {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      z-index: -2;
       overflow: hidden;
+    }
+
+    /* REDUCED DARKENING: let the vibrant images shine through clearly */
+    .slideshow::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.2);  /* Light overlay — images stay vivid */
+      backdrop-filter: blur(0px);       /* No blur, keeps background crisp */
+      z-index: 1;
+      pointer-events: none;
     }
 
     .slideshow img {
@@ -27,148 +48,486 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      animation: slide 15s infinite;
+      animation: cinematicZoom 18s infinite;
       opacity: 0;
+      transform: scale(1.05);
     }
 
+    /* different delays for smooth crossfade */
     .slideshow img:nth-child(1) { animation-delay: 0s; }
-    .slideshow img:nth-child(2) { animation-delay: 5s; }
-    .slideshow img:nth-child(3) { animation-delay: 10s; }
+    .slideshow img:nth-child(2) { animation-delay: 6s; }
+    .slideshow img:nth-child(3) { animation-delay: 12s; }
 
-    @keyframes slide {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      30% { opacity: 1; }
-      40% { opacity: 0; }
-      100% { opacity: 0; }
+    @keyframes cinematicZoom {
+      0% { opacity: 0; transform: scale(1.05); }
+      8% { opacity: 1; transform: scale(1.02); }
+      28% { opacity: 1; transform: scale(1); }
+      36% { opacity: 0; transform: scale(1.03); }
+      100% { opacity: 0; transform: scale(1.05); }
     }
 
-    /* Overlay */
+    /* ----- MAIN OVERLAY: EXTRA TRANSPARENT TO REVEAL BACKGROUND SLIDESHOW ----- */
     .overlay {
-      background: rgba(0,0,0,0.6);
+      background: rgba(10, 20, 5, 0.25);  /* Much lighter, background changing clearly visible */
+      backdrop-filter: blur(2px);          /* Gentle glass effect, doesn't hide imagery */
       min-height: 100vh;
-      padding: 20px;
+      padding: 20px 30px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
+    /* ----- HEADER with ultra-transparent glassmorphism ----- */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      background: rgba(0, 0, 0, 0.25);     /* Light transparent */
+      backdrop-filter: blur(8px);
+      padding: 12px 28px;
+      border-radius: 70px;
+      border: 1px solid rgba(76, 175, 80, 0.6);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s;
     }
 
-    header h1 {
-      color: #4CAF50;
+    /* LOGO container (small circular + brand) */
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .logo-area:hover {
+      transform: scale(1.02);
+    }
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(145deg, #2e7d32, #1b5e20);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 12px #4caf50cc;
+      transition: all 0.3s;
+    }
+    .logo-icon svg {
+      width: 32px;
+      height: 32px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffffff, #d4f1d9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    .logo-text span {
+      color: #9bef8f;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      text-shadow: 0 0 8px #4caf50;
     }
 
+    nav {
+      display: flex;
+      gap: 10px;
+      background: rgba(0,0,0,0.2);
+      padding: 6px 12px;
+      border-radius: 50px;
+      backdrop-filter: blur(4px);
+    }
     nav a {
-      margin: 0 10px;
-      color: white;
+      margin: 0 6px;
+      color: #ffffff;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 40px;
+      transition: all 0.25s;
+      letter-spacing: 0.5px;
+      font-size: 0.95rem;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+    nav a:hover {
+      background: #4CAF50;
+      color: white;
+      box-shadow: 0 4px 12px rgba(76,175,80,0.6);
+      transform: translateY(-2px);
+      text-shadow: none;
     }
 
+    /* Hero section - glass card, extra transparent so background shows clearly */
     .hero {
       text-align: center;
-      margin-top: 100px;
+      margin-top: 80px;
+      margin-bottom: 30px;
+      background: rgba(0, 0, 0, 0.28);   /* Very see-through — background changing visible */
+      backdrop-filter: blur(6px);
+      padding: 45px 25px;
+      border-radius: 55px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid rgba(255,255,255,0.35);
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
     }
-
+    .hero:hover {
+      transform: translateY(-6px);
+      background: rgba(0, 0, 0, 0.35);
+    }
     .hero h2 {
-      font-size: 40px;
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(125deg, #ffffff, #d0f0c4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 18px;
+      letter-spacing: -0.3px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
-
     .hero p {
-      font-size: 18px;
-      max-width: 600px;
-      margin: auto;
+      font-size: 1.2rem;
+      max-width: 680px;
+      margin: 0 auto 25px;
+      line-height: 1.5;
+      font-weight: 500;
+      color: #f9ffe6;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.5);
     }
-
     .btn {
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: #4CAF50;
+      margin-top: 8px;
+      padding: 14px 34px;
+      background: linear-gradient(105deg, #4CAF50, #2e7d32);
       border: none;
       color: white;
-      font-size: 16px;
+      font-size: 1.1rem;
+      font-weight: bold;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 60px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(2px);
     }
-
     .btn:hover {
-      background: #45a049;
+      background: linear-gradient(105deg, #6bc46e, #1f5e23);
+      transform: scale(1.03);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.4);
     }
 
+    /* About Section - crystal clear card style, background fully visible */
     section {
       margin-top: 80px;
       text-align: center;
     }
-
+    .section-badge {
+      display: inline-block;
+      background: #2e7d32cc;
+      backdrop-filter: blur(6px);
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      color: white;
+      text-shadow: 0 1px 2px black;
+    }
     .about {
-      max-width: 800px;
+      max-width: 850px;
       margin: auto;
-      line-height: 1.6;
+      line-height: 1.7;
+      background: rgba(0, 0, 0, 0.3);     /* Transparent to see background slideshow */
+      backdrop-filter: blur(8px);
+      padding: 35px 40px;
+      border-radius: 48px;
+      border-left: 6px solid #4CAF50;
+      border-right: 1px solid rgba(76,175,80,0.5);
+      transition: all 0.3s;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+    }
+    .about p {
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+      font-weight: 500;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+      color: #fefef5;
+    }
+    .about p:last-child {
+      margin-bottom: 0;
     }
 
+    /* decorative floating leaves - subtle */
+    .creative-accents {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.5;
+    }
+    .creative-accents svg {
+      filter: drop-shadow(0 0 8px #4caf50);
+    }
+
+    /* footer modern, super transparent */
     footer {
       text-align: center;
-      margin-top: 50px;
-      padding: 10px;
-      background: rgba(0,0,0,0.7);
+      margin-top: 80px;
+      padding: 20px 20px;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(12px);
+      border-radius: 40px 40px 20px 20px;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid rgba(76,175,80,0.4);
+    }
+    .footer-left p, .footer-right p {
+      margin: 5px 0;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    }
+    .social-icons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 6px;
+    }
+    .social-icons a {
+      color: #e0f2e0;
+      transition: 0.2s;
+      display: inline-flex;
+      text-decoration: none;
+      font-weight: 500;
+      text-shadow: 0 1px 2px black;
+    }
+    .social-icons a:hover {
+      color: #4CAF50;
+      transform: translateY(-2px);
+    }
+    a {
+      text-decoration: none;
+    }
+
+    /* responsive adjustments */
+    @media (max-width: 700px) {
+      .overlay {
+        padding: 16px;
+      }
+      header {
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 40px;
+        text-align: center;
+      }
+      nav {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .about {
+        padding: 25px 20px;
+      }
+      .logo-area {
+        justify-content: center;
+      }
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* Extra readability & shine for text on transparent backgrounds */
+    .hero p, .about p, footer p, .section-badge {
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    /* Ensure background images are fully vibrant */
+    .slideshow img {
+      filter: brightness(1.02) contrast(1.05);
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Images -->
+  <!-- Background Images - crystal clear slideshow, original references + robust fallbacks -->
   <div class="slideshow">
-    <img src="diseased plant.webp" alt="Diseased Plant">
-    <img src="crop disease.jpeg" alt="Crop Disease">
-    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6" alt="Damaged Leaves">
+    <!-- Using your original local images + high-res unsplash backups to keep beautiful disease/nature scenes -->
+    <img src="diseased plant.webp" alt="Crop disease detection scene" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1574943320219-553eb3d1b6f8?q=80&w=2070&auto=format';">
+    <img src="crop disease.jpeg" alt="Agricultural field with plant infection" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=2073&auto=format';">
+    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=2073&auto=format" alt="Vibrant green farm leaves">
   </div>
 
   <div class="overlay">
 
     <header>
-      <h1>Green Bytes</h1>
+      <div class="logo-area" onclick="location.href='#home'">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3L3 8L12 13L21 8L12 3Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="#4CAF50" fill-opacity="0.9"/>
+            <path d="M3 13L12 18L21 13" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M3 18L12 23L21 18" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="12" cy="8" r="1.5" fill="#fff" stroke="none"/>
+          </svg>
+        </div>
+        <div class="logo-text">Green <span>Bytes</span></div>
+      </div>
       <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
+        <a href="#" style="background: #2e7d32b3;" onclick="location.href='https://detection-system-ivory.vercel.app/'">Detection</a>
       </nav>
     </header>
 
     <div class="hero" id="home">
-      <h2>Smart Crop Disease Detection & Farmer Marketplace</h2>
+      <h2>🌾 Smart Crop Disease Detection<br> & Farmer Marketplace</h2>
       <p>
         Identify crop diseases instantly using AI and connect farmers directly to buyers through our smart marketplace.
+        Scan, detect, and sell — all in one green ecosystem. The changing farmlands come alive behind.
       </p>
-
-      <!-- Main Page Button -->
-      <button class="btn" onclick="location.href='https://detection-system-ivory.vercel.app/'">Go to Detection System</button>
+      <button class="btn" onclick="location.href='https://detection-system-ivory.vercel.app/'">
+        🚀 Launch Detection System
+      </button>
     </div>
 
     <section id="about">
-      <h2>About Us</h2>
+      <div class="section-badge">🌱 Our Mission</div>
       <div class="about">
         <p>
-          Green Bytes is a smart farming platform designed to help farmers detect crop diseases early and take quick action.
-          Our AI-powered system analyzes plant images and provides accurate disease detection along with recommended solutions.
+          <strong>Green Bytes</strong> is a smart farming platform designed to help farmers detect crop diseases early and take quick action.
+          Our AI-powered system analyzes plant images and provides accurate disease detection along with recommended solutions — all in real time.
         </p>
         <p>
-          In addition, our integrated marketplace allows farmers to sell their crops directly to buyers, ensuring better prices
-          and eliminating middlemen.
+          💚 In addition, our integrated marketplace allows farmers to sell their crops directly to buyers, ensuring better prices
+          and eliminating middlemen. No more unfair trade — just transparent, tech-driven agriculture.
         </p>
         <p>
-          Our mission is to empower farmers with technology, improve crop yield, and build a sustainable agricultural ecosystem.
+          🌍 Our mission is to empower farmers with technology, improve crop yield, and build a sustainable agricultural ecosystem.
+          Join the revolution — from soil to sale, smarter with Green Bytes.
         </p>
+        <div style="margin-top: 20px;">
+          <span style="background:#2e7d32dd; backdrop-filter:blur(2px); padding:6px 12px; border-radius:50px; font-size:0.8rem;">✨ AI Diagnosis</span>
+          <span style="background:#1b5e20cc; backdrop-filter:blur(2px); padding:6px 12px; border-radius:50px; font-size:0.8rem; margin-left:10px;">📈 Direct Marketplace</span>
+        </div>
       </div>
     </section>
 
     <footer id="contact">
-      <p>Contact: support@green bytes.com</p>
-      <p>&copy; 2026 Green Bytes. All rights reserved.</p>
+      <div class="footer-left">
+        <p>📧 support@greenbytes.agri</p>
+        <p>🌱 Smart Farming · AI for Good</p>
+      </div>
+      <div class="footer-right">
+        <p>&copy; 2026 Green Bytes. All rights reserved.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Twitter">🐦 Twitter</a>
+          <a href="#" aria-label="Instagram">📸 Instagram</a>
+          <a href="#" aria-label="LinkedIn">🔗 LinkedIn</a>
+        </div>
+      </div>
     </footer>
-
   </div>
 
+  <!-- decorative subtle leaf accent (extra creative touch) -->
+  <div class="creative-accents">
+    <svg width="70" height="70" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L14 8L20 10L14 12L12 18L10 12L4 10L10 8L12 2Z" fill="#6fbf4c" fill-opacity="0.35" stroke="#c8e6c9" stroke-width="0.8"/>
+      <path d="M12 5L13.5 9L18 10.5L13.5 12L12 16.5L10.5 12L6 10.5L10.5 9L12 5Z" fill="#4caf50" fill-opacity="0.5"/>
+    </svg>
+  </div>
+
+  <script>
+    // smooth anchor scroll for navigation
+    document.querySelectorAll('nav a[href^="#"], .logo-area[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if(targetId && targetId !== '#' && targetId.startsWith('#')) {
+          e.preventDefault();
+          const targetElem = document.querySelector(targetId);
+          if(targetElem) {
+            targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+    
+    // Auto-update copyright year dynamically
+    const copyrightPara = document.querySelector('footer .footer-right p:first-child');
+    if(copyrightPara) {
+      const currentYear = new Date().getFullYear();
+      if(currentYear !== 2026) {
+        copyrightPara.innerHTML = &copy; ${currentYear} Green Bytes. All rights reserved.;
+      }
+    }
+    
+    // Ripple effect for buttons (just for extra delight)
+    const btns = document.querySelectorAll('.btn');
+    btns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        let ripple = document.createElement('span');
+        ripple.style.position = 'absolute';
+        ripple.style.borderRadius = '50%';
+        ripple.style.backgroundColor = 'rgba(255,255,255,0.6)';
+        ripple.style.width = '20px';
+        ripple.style.height = '20px';
+        ripple.style.transform = 'scale(1)';
+        ripple.style.animation = 'rippleEffect 0.5s linear';
+        ripple.style.pointerEvents = 'none';
+        const rect = btn.getBoundingClientRect();
+        ripple.style.left = ${e.clientX - rect.left - 10}px;
+        ripple.style.top = ${e.clientY - rect.top - 10}px;
+        btn.style.position = 'relative';
+        btn.style.overflow = 'hidden';
+        btn.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 500);
+      });
+    });
+    
+    // Inject ripple keyframes
+    const styleRipple = document.createElement('style');
+    styleRipple.textContent = @keyframes rippleEffect { 0% { transform: scale(0); opacity: 0.6; } 100% { transform: scale(15); opacity: 0; } };
+    document.head.appendChild(styleRipple);
+    
+    // Ensure background crossfade is vivid and visible - additional logging for dev
+    console.log("🌿 Green Bytes — background slideshow now fully visible through transparent glass boxes!");
+    
+    // Small fix to guarantee that any missing local images fallback to unsplash, but already handled in img onerror
+    // Also add a preemptive enhancement: no extra dark overlays, background changing clearly seen.
+    // Additionally guarantee that the hero and about sections never obscure the beautiful slideshow
+    // Add a subtle dynamic gradient to text for extra readability without hiding background.
+    const styleReadability = document.createElement('style');
+    styleReadability.textContent = `
+      .hero h2, .hero p, .about p, .footer-left p, .footer-right p, .section-badge {
+        text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+      }
+      .about span, .hero .btn {
+        text-shadow: none;
+      }
+      nav a {
+        text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      }
+    `;
+    document.head.appendChild(styleReadability);
+  </script>
 </body>
 </html>
